@@ -40,8 +40,8 @@ export default class HourList extends React.Component{
         return(
             <Content>
                 {
-                    this.state.hours.map(month => {
-                        return <Card>
+                    this.state.hours.map((month, index) => {
+                        return <Card key={index}>
                             <CardItem header style={styles.monthTitleContainer}>
                                 <Text style={styles.monthTitle}>{month.month}</Text>
                                 <Text style={styles.monthTotal}>{month.total} hours</Text>
@@ -49,33 +49,33 @@ export default class HourList extends React.Component{
                             <CardItem>
                                 <Body>
                                     {
-                                        month.dates.map((date, index) => {
-                                            return <Card key={index} style={{width: '100%'}}>
-                                                <CardItem header>
-                                                    <Text style={styles.dateTitle}>{this.displayDate(date.date)}</Text>
-                                                </CardItem>
-                                                <CardItem>
-                                                    <List style={{width: '100%'}}>
-                                                        {
-                                                            date.times.map((time, index) => {
-                                                                return <ListItem style={styles.listItem} key={index}> 
-                                                                    <Text>
-                                                                        {time.startTime} to {time.endTime}
-                                                                    </Text>
-                                                                    <Text style={styles.hoursAmount}>
-                                                                        {time.endTime - time.startTime} hours
-                                                                    </Text>
-                                                                </ListItem>
-                                                            })
-                                                        }
-                                                        <ListItem style={styles.totalItem} key={'endKey'}>
-                                                            <Text>Total</Text>
-                                                            <Text>{date.total} hours</Text>
-                                                        </ListItem>
-                                                    </List>
-                                                </CardItem>
-                                            </Card>
-                                        })
+                                    month.dates.map((date, index) => {
+                                        return <Card key={index} style={{width: '100%'}}>
+                                            <CardItem header>
+                                                <Text style={styles.dateTitle}>{this.displayDate(date.date)}</Text>
+                                            </CardItem>
+                                            <CardItem>
+                                                <List style={{width: '100%'}}>
+                                                    {
+                                                        date.times.map((time, index) => {
+                                                            return <ListItem style={styles.listItem} key={index}> 
+                                                                <Text>
+                                                                    {time.startTime} to {time.endTime}
+                                                                </Text>
+                                                                <Text style={styles.hoursAmount}>
+                                                                    {time.endTime - time.startTime} hours
+                                                                </Text>
+                                                            </ListItem>
+                                                        })
+                                                    }
+                                                    <ListItem style={styles.totalItem} key={'endKey'}>
+                                                        <Text>Total</Text>
+                                                        <Text>{date.total} hours</Text>
+                                                    </ListItem>
+                                                </List>
+                                            </CardItem>
+                                        </Card>
+                                    })
                                     }
                                 </Body>
                             </CardItem>        

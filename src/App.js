@@ -11,8 +11,11 @@ import 'react-native-gesture-handler';
 
 import MainScreen from './screens/MainScreen';
 
+import HoursData from './data/Hours';
+
 export default class App extends React.Component{
 	constructor(props){
+		// console.log(HoursData);
 		super(props);
 		this.state = {
 			hours: [
@@ -100,6 +103,8 @@ export default class App extends React.Component{
 				}
 			]
 		};
+
+		// console.log(HoursData);
 	}
 	
 	insertData = async (data) => {
