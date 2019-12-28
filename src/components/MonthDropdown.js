@@ -7,13 +7,56 @@ import {
 export default class MonthDropDown extends React.Component{
     constructor(props){
         super(props);
+        let today = new Date().getMonth();
+
+        switch(today){
+            case 0:
+                today = 'Jan';
+                break;
+            case 1:
+                today = 'Feb';
+                break;
+            case 2:
+                today = 'Mar';
+                break;
+            case 3:
+                today = 'Apr';
+                break;
+            case 4:
+                today = 'May';
+                break;
+            case 5:
+                today = 'Jun';
+                break;
+            case 6:
+                today = 'Jul';
+                break;
+            case 7:
+                today = 'Aug';
+                break;
+            case 8:
+                today = 'Sep';
+                break;
+            case 9:
+                today = 'Oct';
+                break;
+            case 10:
+                today = 'Nov';
+                break;
+            case 11:
+                today = 'Dec';
+                break;
+        }
+
+        this.handleValueChange(today);
+
         this.state = {
-            monthValue: ''     
+            monthValue: today
         };
     }
 
-    handleValueChange = () => {
-
+    handleValueChange = (value) => {
+        this.props.getMonthValue(value);
     }
 
     render(){
@@ -22,24 +65,29 @@ export default class MonthDropDown extends React.Component{
                 mode="dropdown"
                 iosIcon={<Icon name="arrow-down" />}
                 placeholder="Month"
-                style={{color: 'white', width: 45}}
+                style={{color: 'white'}}
                 placeholderStyle={{ color: "white" }}
                 placeholderIconColor="white"
                 selectedValue={this.state.monthValue}
-                onValueChange={this.handleValueChange}
+                onValueChange={(data) => {
+                    this.setState({monthValue: data});
+                    this.handleValueChange(data);
+                    this.props.startInput.focus();
+                }}
             >
-                <Picker.Item label="January" value="january" />
-                <Picker.Item label="February" value="february" />
-                <Picker.Item label="March" value="march" />
-                <Picker.Item label="April" value="april" />
+                <Picker.Item label={this.state.monthValue.toString()} value={this.state.monthValue.toString()} />
+                <Picker.Item label="Jan" value="jan" />
+                <Picker.Item label="Feb" value="feb" />
+                <Picker.Item label="Mar" value="mar" />
+                <Picker.Item label="Apr" value="apr" />
                 <Picker.Item label="May" value="may" />
-                <Picker.Item label="June" value="june" />
-                <Picker.Item label="July" value="july" />
-                <Picker.Item label="August" value="august" />
-                <Picker.Item label="September" value="september" />
-                <Picker.Item label="October" value="october" />
-                <Picker.Item label="November" value="november" />
-                <Picker.Item label="December" value="december" />
+                <Picker.Item label="Jun" value="jun" />
+                <Picker.Item label="Jul" value="jul" />
+                <Picker.Item label="Aug" value="aug" />
+                <Picker.Item label="Sep" value="sep" />
+                <Picker.Item label="Oct" value="oct" />
+                <Picker.Item label="Nov" value="nov" />
+                <Picker.Item label="Dec" value="dec" />
             </Picker>
         );
     }

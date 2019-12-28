@@ -13,13 +13,24 @@ import FooterForm from './../components/FooterForm';
 export default class MainScreen extends React.Component{
     constructor(props){
         super(props);
+
         this.state = {
-            hours: this.props.hours
+            hours: this.props.hours,
+            dateValue: '',
+            monthValue: '',
+            startTime: 0,
+            endTime: 0
         };
     }
-
-    UNSAFE_componentWillMount(){
-        // this.props.insertData('bobby');
+    
+    handleSubmit = (dateValue, monthValue, startTime, endTime) => {
+        // this.setState({ endTime: parseInt(end) });
+        let dateVal = dateValue;
+        let monthVal = monthValue;
+        let start = startTime;
+        let end = endTime;
+        
+        console.log(dateVal, monthVal, start, end);
     }
 
     render(){
@@ -27,7 +38,7 @@ export default class MainScreen extends React.Component{
             <Container>
                 <AppHeader />
                 <HourList hours={this.state.hours}/>
-                <FooterForm hours={this.state.hours}/>
+                <FooterForm hours={this.state.hours} handleSubmit={this.handleSubmit}/>
             </Container>
         );
     }
