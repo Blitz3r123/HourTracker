@@ -76,18 +76,18 @@ export default class MonthDropDown extends React.Component{
                 }}
             >
                 <Picker.Item label={this.state.monthValue.toString()} value={this.state.monthValue.toString()} />
-                <Picker.Item label="Jan" value="jan" />
-                <Picker.Item label="Feb" value="feb" />
-                <Picker.Item label="Mar" value="mar" />
-                <Picker.Item label="Apr" value="apr" />
-                <Picker.Item label="May" value="may" />
-                <Picker.Item label="Jun" value="jun" />
-                <Picker.Item label="Jul" value="jul" />
-                <Picker.Item label="Aug" value="aug" />
-                <Picker.Item label="Sep" value="sep" />
-                <Picker.Item label="Oct" value="oct" />
-                <Picker.Item label="Nov" value="nov" />
-                <Picker.Item label="Dec" value="dec" />
+                <Picker.Item label="Jan" value="January" />
+                <Picker.Item label="Feb" value="February" />
+                <Picker.Item label="Mar" value="March" />
+                <Picker.Item label="Apr" value="April" />
+                <Picker.Item label="May" value="May" />
+                <Picker.Item label="Jun" value="June" />
+                <Picker.Item label="Jul" value="July" />
+                <Picker.Item label="Aug" value="August" />
+                <Picker.Item label="Sep" value="September" />
+                <Picker.Item label="Oct" value="October" />
+                <Picker.Item label="Nov" value="November" />
+                <Picker.Item label="Dec" value="December" />
             </Picker>
         );
     }

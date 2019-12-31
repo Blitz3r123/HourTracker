@@ -14,7 +14,7 @@ export default class HourList extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            hours: this.props.hours
+            data: this.props.data
         };
     }
 

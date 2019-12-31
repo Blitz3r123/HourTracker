@@ -38,8 +38,8 @@ export default class DateDropdown extends React.Component{
             >
                 <Picker.Item label={this.state.dateValue.toString()} value={this.state.dateValue.toString()} />
                 {
-                    this.state.dates.map(date => {
-                        return <Picker.Item label={date.toString()} value={date.toString()} />
+                    this.state.dates.map((date, index) => {
+                        return <Picker.Item key={index} label={date.toString()} value={date.toString()} />
                     })
                 }
                 {/* <Picker.Item label="December" value="key1" /> */}
