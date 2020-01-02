@@ -20,14 +20,8 @@ export default class MainScreen extends React.Component{
 
     }
     
-    handleSubmit = (dateValue, monthValue, startTime, endTime) => {
-        // this.setState({ endTime: parseInt(end) });
-        let dateVal = dateValue;
-        let monthVal = monthValue;
-        let start = startTime;
-        let end = endTime;
+    handleSubmit = (year, month, day, start, end) => {
         
-        // console.log(monthVal);
     }
 
     render(){

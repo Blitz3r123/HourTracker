@@ -27,9 +27,6 @@ export default class HourList extends React.Component{
                             </Tab>
                         })
                     }
-                    {/* <Tab heading="2019">
-                        <HourTab data={this.state.data.years[0]} year={this.state.data.years[0].title}/>
-                    </Tab> */}
                 </Tabs>
             </Container>
         );

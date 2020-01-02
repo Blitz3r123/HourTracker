@@ -7,6 +7,7 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
+import { Root } from 'native-base';
 import 'react-native-gesture-handler';
 
 import MainScreen from './screens/MainScreen';
@@ -23,7 +24,7 @@ export default class App extends React.Component{
 
     render(){
         return(
-            <MainScreen data={this.state.data} insertData={this.insertData}/>
+            <Root><MainScreen data={this.state.data} insertData={this.insertData}/></Root>
         );
     }
 }

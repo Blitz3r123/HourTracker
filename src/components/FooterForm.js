@@ -5,7 +5,9 @@ import {
     Item,
     Picker,
     Icon,
-    Input
+    Input,
+    DatePicker,
+    Toast
 } from 'native-base';
 import { StyleSheet, TextInput } from 'react-native';
 import MonthDropDown from './MonthDropdown';
@@ -15,62 +17,97 @@ export default class FooterForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            hours: this.props.hours,
-            dateValue: '',
-            monthValue: '',
+            chosenDate: new Date(),
             startValue: 0,
             endValue: 0
         };
+        this.setDate = this.setDate.bind(this);
     }
 
-    getMonthValue = (value) => {
-        this.setState({monthValue: value});
-    }
-    
-    getDateValue = (value) => {
-        this.setState({dateValue: value});
+    indexToMonth(monthNumber){
+        switch(monthNumber){
+            case 0:
+                return 'January';
+                break;
+            case 1:
+                return 'February';
+                break;
+            case 2:
+                return 'March';
+                break;
+            case 3:
+                return 'April';
+                break;
+            case 4:
+                return 'May';
+                break;
+            case 5:
+                return 'June';
+                break;
+            case 6:
+                return 'July';
+                break;
+            case 7:
+                return 'August';
+                break;
+            case 8:
+                return 'September';
+                break;
+            case 9:
+                return 'October';
+                break;
+            case 10:
+                return 'November';
+                break;
+            case 11:
+                return 'December';
+                break;
+        }
     }
 
     handleSubmit = () => {
-        let dateValue = this.state.dateValue;
-        let monthValue = this.state.monthValue;
-        let startTime = parseInt(this.state.startValue);
-        let endTime = parseInt(this.state.endValue);
+        let date = this.state.chosenDate;
+        let start = this.state.startValue;
+        let end = this.state.endValue;
 
-        // Check for empty start/end time values
-        if(startTime == 0 || endTime == 0){
-            if(startTime == 0){
-                alert('You left the start time empty.');
-            }else{
-                alert('You left the end time empty.');
-            }
-        }else{
-            // Check that start/end time is under 24
-            if(startTime > 24 || endTime > 24){
-                alert("You can't have a time greater than 24.");
-            }else{
-                // Check that end is bigger than start
-                if(endTime < startTime){
-                    alert(endTime + " can't be smaller than " + startTime + ".");
-                }else{
-                    // All values should be good to go from here
-                    this.props.handleSubmit(dateValue, monthValue, startTime, endTime);
-                }
-            }
+        let year = date.getFullYear();
+        let month = this.indexToMonth(date.getMonth());
+        let day = date.getDate();
 
-        }
+        this.props.handleSubmit(year, month, day, start, end);
+
+        Toast.show({
+            text: "Added",
+            duration: 3000,
+            position: 'center',
+            type: 'success'
+        });
+    }
+    
+    setDate(newDate){
+        this.setState({ chosenDate: newDate});
     }
 
     render(){
         return(
-            <Footer>
+            <Footer style={{display: 'flex', justifyContent: 'center'}}>
                 <Form style={styles.form}>
-                    <Item picker style={styles.formContent}>
-                        <DateDropdown getDateValue={this.getDateValue}/>
-                        <MonthDropDown getMonthValue={this.getMonthValue} startInput={this.startInput}/>
+                    <Item style={{display: 'flex', justifyContent: 'space-evenly'}}>
+                        <DatePicker
+                        defaultDate={new Date()}
+                        locale={"en"}
+                        timeZoneOffsetInMinutes={undefined}
+                        modalTransparent={false}
+                        animationType={"fade"}
+                        androidMode={"spinner"}
+                        placeHolderText="Select date"
+                        textStyle={{ color: "white" }}
+                        placeHolderTextStyle={{ color: "#d3d3d3" }}
+                        onDateChange={this.setDate}
+                        disabled={false}
+                        />
                         <TextInput 
                             ref={input => this.startInput = input}
-                            style={{marginRight: 20, color: 'white'}}
                             placeholder="Start Time" 
                             keyboardType={'number-pad'} 
                             placeholderTextColor={'white'}
@@ -78,16 +115,17 @@ export default class FooterForm extends React.Component{
                             returnKeyType={'next'}
                             blurOnSubmit={false}
                             onSubmitEditing={() => {this.endInput.focus();}}
+                            style={styles.whiteText}
                             >
                         </TextInput>
                         <TextInput 
-                            style={{marginRight: 20, color: 'white'}}
                             ref={input => this.endInput = input}
                             placeholder="End Time" 
                             keyboardType={'number-pad'} 
                             placeholderTextColor={'white'}
                             onChangeText={(text) => this.setState({endValue: text})}
-                            onEndEditing={this.handleSubmit}>
+                            onEndEditing={this.handleSubmit}
+                            style={styles.whiteText}>
                         </TextInput>
                     </Item>
                 </Form>
@@ -97,12 +135,10 @@ export default class FooterForm extends React.Component{
 }
 
 const styles = StyleSheet.create({
-    formContent: {
-        borderWidth: 1,
-    },
     form: {
         width: '100%',
-        display: 'flex',
-        justifyContent: 'space-evenly'
+    },
+    whiteText: {
+        color: 'white'
     }
 });
