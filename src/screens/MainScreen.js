@@ -12,15 +12,23 @@ export default class MainScreen extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            data: HourData
+            data: HourData,
+            refresh: 1
         };
+    }
 
-        const year = 2011;
-        const month = 'September';
-        const day = 18;
-        const start = 1;
-        const end = 3;
-        const duration = end - start;
+    sortByMonths(array){
+        var months = ["January", "February", "March", "April", "May", "June",
+              "July", "August", "September", "October", "November", "December"];
+              
+        array.sort(function(a, b){
+            return months.indexOf(a.title)
+                - months.indexOf(b.title);
+        });
+    }
+
+    handleSubmit = (year, month, day, start, end) => {
+        let duration = end - start;
 
         let newObject = {
             title: year,
@@ -120,7 +128,7 @@ export default class MainScreen extends React.Component{
                     - Get year object
                     - Create month object
                     - Insert into year object
-            2. Year does not exist                          IN PROGRESS
+            2. Year does not exist                          WORKING
                 - Create year object
                 - Insert into data
         */
@@ -161,6 +169,8 @@ export default class MainScreen extends React.Component{
                         newData.years[yearIndex].months[monthIndex].days[dayIndex].hours.sort((a, b) => {
                             return a.start > b.start;
                         });
+
+                        this.setState({refresh: 1});
                     }
                 }else{
                     // 1.1.2 Day does not exist
@@ -177,6 +187,8 @@ export default class MainScreen extends React.Component{
                     daysArray.sort((a, b) => {
                         return a.title > b.title;
                     });
+
+                    this.setState({refresh: 1});
                 }   
             }else{
                 // 1.2 Month does not exist
@@ -190,6 +202,8 @@ export default class MainScreen extends React.Component{
                 monthsArray.push(newMonthObject);
                 // Sort array
                 this.sortByMonths(monthsArray);
+
+                this.setState({refresh: 1});
             }
         }else{
             // 2. Year does not exist
@@ -199,22 +213,9 @@ export default class MainScreen extends React.Component{
             yearsArray.sort((a, b) => {
                 return a.title > b.title;
             });
+
+            this.setState({refresh: 1});
         }
-
-    }
-
-    sortByMonths(array){
-        var months = ["January", "February", "March", "April", "May", "June",
-              "July", "August", "September", "October", "November", "December"];
-              
-        array.sort(function(a, b){
-            return months.indexOf(a.title)
-                - months.indexOf(b.title);
-        });
-    }
-
-    handleSubmit = (year, month, day, start, end) => {
-
     }
 
     render(){
