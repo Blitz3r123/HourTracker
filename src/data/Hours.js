@@ -1,101 +1,101 @@
 export default {
     years: [
-        {
-            title: 2018,
-            total: 45,
-            months: [
-                {
-                    title: 'November',
-                    total: 15,
-                    days: [
-                        {
-                            title: 22,
-                            total: 5,
-                            hours: [
-                                {start: 8, end: 10},
-                                {start: 11, end: 14}
-                            ]
-                        },
-                        {
-                            title: 24,
-                            total: 1,
-                            hours: [
-                                {start: 8, end: 9}
-                            ]
-                        }
-                    ]
-                },
-                {
-                    title: 'December',
-                    total: 6,
-                    days: [
-                        {
-                            title: 22,
-                            total: 5,
-                            hours: [
-                                {start: 8, end: 10},
-                                {start: 11, end: 14}
-                            ]
-                        },
-                        {
-                            title: 24,
-                            total: 1,
-                            hours: [
-                                {start: 8, end: 9}
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            title: 2019,
-            total: 45,
-            months: [
-                {
-                    title: 'January',
-                    total: 10,
-                    days: [
-                        {
-                            title: 12,
-                            total: 5,
-                            hours: [
-                                {start: 8, end: 10},
-                                {start: 11, end: 14}
-                            ]
-                        },
-                        {
-                            title: 20,
-                            total: 5,
-                            hours: [
-                                {start: 8, end: 13}
-                            ]
-                        }
-                    ]
-                },
-                {
-                    title: 'June',
-                    total: 15,
-                    days: [
-                        {
-                            title: 22,
-                            total: 5,
-                            hours: [
-                                {start: 8, end: 10},
-                                {start: 11, end: 14}
-                            ]
-                        },
-                        {
-                            title: 24,
-                            total: 1,
-                            hours: [
-                                {start: 8, end: 9}
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }
+        // {
+        //     title: 2018,
+        //     total: 45,
+        //     months: [
+        //         {
+        //             title: 'November',
+        //             total: 15,
+        //             days: [
+        //                 {
+        //                     title: 22,
+        //                     total: 5,
+        //                     hours: [
+        //                         {start: 8, end: 10},
+        //                         {start: 11, end: 14}
+        //                     ]
+        //                 },
+        //                 {
+        //                     title: 24,
+        //                     total: 1,
+        //                     hours: [
+        //                         {start: 8, end: 9}
+        //                     ]
+        //                 }
+        //             ]
+        //         },
+        //         {
+        //             title: 'December',
+        //             total: 6,
+        //             days: [
+        //                 {
+        //                     title: 22,
+        //                     total: 5,
+        //                     hours: [
+        //                         {start: 8, end: 10},
+        //                         {start: 11, end: 14}
+        //                     ]
+        //                 },
+        //                 {
+        //                     title: 24,
+        //                     total: 1,
+        //                     hours: [
+        //                         {start: 8, end: 9}
+        //                     ]
+        //                 }
+        //             ]
+        //         }
+        //     ]
+        // },
+        // {
+        //     title: 2019,
+        //     total: 45,
+        //     months: [
+        //         {
+        //             title: 'January',
+        //             total: 10,
+        //             days: [
+        //                 {
+        //                     title: 12,
+        //                     total: 5,
+        //                     hours: [
+        //                         {start: 8, end: 10},
+        //                         {start: 11, end: 14}
+        //                     ]
+        //                 },
+        //                 {
+        //                     title: 20,
+        //                     total: 5,
+        //                     hours: [
+        //                         {start: 8, end: 13}
+        //                     ]
+        //                 }
+        //             ]
+        //         },
+        //         {
+        //             title: 'June',
+        //             total: 15,
+        //             days: [
+        //                 {
+        //                     title: 22,
+        //                     total: 5,
+        //                     hours: [
+        //                         {start: 8, end: 10},
+        //                         {start: 11, end: 14}
+        //                     ]
+        //                 },
+        //                 {
+        //                     title: 24,
+        //                     total: 1,
+        //                     hours: [
+        //                         {start: 8, end: 9}
+        //                     ]
+        //                 }
+        //             ]
+        //         }
+        //     ]
+        // }
     ]
 };
 // export default [
