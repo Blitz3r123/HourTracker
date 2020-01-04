@@ -25,7 +25,7 @@ export default class HourList extends React.Component{
                     <Tabs>
                         {
                             this.state.data.years.map((year, index) => {
-                                return <Tab heading={year.title + ''}>
+                                return <Tab key={index} heading={year.title + ''}>
                                     <HourTab data={year} year={year.title} />
                                 </Tab>
                             })

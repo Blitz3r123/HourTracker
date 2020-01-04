@@ -76,16 +76,14 @@ export default class FooterForm extends React.Component{
 
         this.props.handleSubmit(year, month, day, start, end);
 
-        Toast.show({
-            text: "Added",
-            duration: 3000,
-            position: 'center',
-            type: 'success'
-        });
+        this.setState({ chosenDate: new Date() });
+        this.startInput.clear();
+        this.endInput.clear();
     }
     
     setDate(newDate){
         this.setState({ chosenDate: newDate});
+        this.startInput.focus();
     }
 
     render(){
@@ -99,7 +97,7 @@ export default class FooterForm extends React.Component{
                         timeZoneOffsetInMinutes={undefined}
                         modalTransparent={false}
                         animationType={"fade"}
-                        androidMode={"spinner"}
+                        androidMode={"default"}
                         placeHolderText="Select date"
                         textStyle={{ color: "white" }}
                         placeHolderTextStyle={{ color: "#d3d3d3" }}

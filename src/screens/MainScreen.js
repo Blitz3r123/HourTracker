@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container } from 'native-base';
+import { Toast } from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import AppHeader from '../components/AppHeader';
@@ -28,6 +29,14 @@ export default class MainScreen extends React.Component{
     }
 
     handleSubmit = (year, month, day, start, end) => {
+        start = parseInt(start);
+        end = parseInt(end);
+
+        if(start > end){
+            alert("End hour can't be smaller than start hour.");
+            return;
+        }
+
         let duration = end - start;
 
         let newObject = {
@@ -169,8 +178,6 @@ export default class MainScreen extends React.Component{
                         newData.years[yearIndex].months[monthIndex].days[dayIndex].hours.sort((a, b) => {
                             return a.start > b.start;
                         });
-
-                        this.setState({refresh: 1});
                     }
                 }else{
                     // 1.1.2 Day does not exist
@@ -187,8 +194,6 @@ export default class MainScreen extends React.Component{
                     daysArray.sort((a, b) => {
                         return a.title > b.title;
                     });
-
-                    this.setState({refresh: 1});
                 }   
             }else{
                 // 1.2 Month does not exist
@@ -202,8 +207,6 @@ export default class MainScreen extends React.Component{
                 monthsArray.push(newMonthObject);
                 // Sort array
                 this.sortByMonths(monthsArray);
-
-                this.setState({refresh: 1});
             }
         }else{
             // 2. Year does not exist
@@ -213,9 +216,16 @@ export default class MainScreen extends React.Component{
             yearsArray.sort((a, b) => {
                 return a.title > b.title;
             });
-
-            this.setState({refresh: 1});
         }
+
+        Toast.show({
+            text: "Added",
+            duration: 3000,
+            position: 'center',
+            type: 'success'
+        });
+        this.setState({refresh: 1});
+
     }
 
     render(){
